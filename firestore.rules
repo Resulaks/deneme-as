@@ -6,8 +6,8 @@ service cloud.firestore {
     // Birden fazla yönetici için e-postaları virgülle ekleyin. KÜÇÜK HARFLE yazın.
     function isAdmin() {
       return request.auth != null
-        && request.auth.token.firebase.sign_in_provider == 'password'
-        && request.auth.token.email.lower() in ['yonetici@ornek.com'];
+        && request.auth.token.firebase.sign_in_provider == '001596'
+        && request.auth.token.email.lower() in ['sıparıs001@gmaıl.com'];
     }
 
     // Menü: herkes okur, sadece yönetici değiştirir
