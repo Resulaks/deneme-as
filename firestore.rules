@@ -2,21 +2,17 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Yönetici: Authentication'da e-posta/şifre ile oluşturduğunuz hesaplar.
-    // Birden fazla yönetici için e-postaları virgülle ekleyin. KÜÇÜK HARFLE yazın.
+    // Yonetici = e-posta/sifre ile giris yapmis herkes
     function isAdmin() {
       return request.auth != null
-        && request.auth.token.firebase.sign_in_provider == '001596'
-        && request.auth.token.email.lower() in [zqDiwp9Aw9UQU1E1GL4e46YOL373];
+        && request.auth.token.firebase.sign_in_provider == 'password';
     }
 
-    // Menü: herkes okur, sadece yönetici değiştirir
     match /products/{id} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
-    // Siparişler: müşteri sipariş oluşturabilir, sadece yönetici görür/yönetir
     match /orders/{id} {
       allow create: if request.resource.data.status == 'Yeni'
         && request.resource.data.name is string
