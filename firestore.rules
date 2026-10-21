@@ -7,7 +7,7 @@ service cloud.firestore {
     function isAdmin() {
       return request.auth != null
         && request.auth.token.firebase.sign_in_provider == '001596'
-        && request.auth.token.email.lower() in ['sıparıs001@gmaıl.com'];
+        && request.auth.token.email.lower() in ['zqDiwp9Aw9UQU1E1GL4e46YOL373'];
     }
 
     // Menü: herkes okur, sadece yönetici değiştirir
